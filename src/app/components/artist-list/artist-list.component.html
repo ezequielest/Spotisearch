@@ -1,0 +1,49 @@
+<div id="principal" class="container-fluid contenedor-jumbotron animated fadeIn">
+  <div class="container">
+      <div class="jumbotron">
+          <h2 class="display-4">Artist</h2>
+          <p class="lead">Busqueda actual: "{{busqueda}}"</p>
+          <hr class="my-4">
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Buscar otro artista" aria-label="Username" (keyup.enter)="buscar(buscarArtista.value)" #buscarArtista aria-describedby="basic-addon1" [value]="busqueda">
+          </div>
+          <hr class="my-4">
+          <a>Home</a> >
+          <a>{{busqueda}}</a>
+      </div>
+  </div>
+</div>
+
+<div id="favoritos" class="container-fluid">
+  <div class="container">
+
+      <app-loader *ngIf="!loader; else resultados" class="animated fadeIn"></app-loader>
+      
+  </div>
+</div>
+
+<ng-template #resultados class="animated fadeIn">
+    <h4>Resultados de busqueda</h4> 
+    <div class="row">
+    
+    <div class="col-md-12 col-lg-6" *ngIf="!artistas.length > 0">
+    <div><span class="badge badge-danger genero">NO SE ENCONTRARON RESULTADOS</span></div>
+    </div>
+    
+    <div class="col-md-12 col-lg-6" *ngFor="let artista of artistas">
+        <a (click)="obtenerAlbums(artista.id)">
+        <div class="card" style="width: 18rem;">
+            <div class="card-contenedor-img">
+                <img  class="img-thumbnail" [src]="artista | imgArtist" alt="">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{artista.name}}</h5>
+            </div>
+        </div>
+        </a>
+    </div>
+    </div>
+</ng-template>

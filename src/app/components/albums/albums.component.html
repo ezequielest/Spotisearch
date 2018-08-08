@@ -1,0 +1,45 @@
+<div id="principal" class="container-fluid contenedor-jumbotron animated fadeIn">
+  <div class="container">
+      <div class="jumbotron">
+        <div id="" style="float:left;">  
+        <img class="img-thumbnail" [src]="artista | imgArtist">
+        </div>
+        <div id="descripcionArtista" style="float:left;">  
+        <h2 class="display-4">{{artista.name}}</h2>
+          <p class="lead"><span class="badge badge-primary genero" *ngFor="let genero of artista.genres">{{genero}}</span></p>
+        </div>
+        <div style="clear:both"></div>
+          <hr class="my-4">
+          <a>Home</a> >
+          <a>{{artista.name}}</a> >
+          <a>Albums</a>
+      </div>
+  </div>
+</div>
+
+<div id="favoritos" class="container-fluid">
+  <div class="container">
+
+      <app-loader *ngIf="!loader; else resultados" class="animated fadeIn"></app-loader>
+
+  </div>
+</div>
+
+<ng-template #resultados>
+    <div class="row">
+    <div class="col-md-12 col-lg-6" *ngFor="let album of albums">
+        <a (click)="obtenerTracks(album.id)">
+        <div class="card" style="width: 18rem;">
+            <div class="card-contenedor-img">
+                <img  class="img-thumbnail" [src]="album | imgArtist" alt="">
+            </div>
+            <div class="card-body">
+                <!--<a (click)="obtenerAlbums(artista.id)"><h5 class="card-title">{{artista.name}}</h5></a>-->
+                <h5 class="card-title">{{album.name}}</h5>
+            </div>
+        </div>
+        </a>
+    </div>
+
+    </div>
+</ng-template>

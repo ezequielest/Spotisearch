@@ -1,0 +1,19 @@
+nav .cont-logo{
+    width: 100%;
+    display: grid;
+}
+
+nav .cont-logo a{
+    margin: auto;
+}
+
+@media (max-width:992px){
+    #contenido-collapse{
+        display:block;
+    }
+    
+    nav .cont-logo{
+        width: calc(100% - 56px);
+
+    }
+}

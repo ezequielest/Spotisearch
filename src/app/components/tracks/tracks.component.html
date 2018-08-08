@@ -1,0 +1,62 @@
+<div id="principal" class="container-fluid contenedor-jumbotron animated fadeIn">
+    <div class="container">
+        <div class="jumbotron">
+          <div id="" style="float:left;">  
+          <img class="img-thumbnail" [src]="album | imgArtist">
+          </div>
+          <div id="descripcionArtista" style="float:left;">  
+          <h2 class="display-4">{{ album.name }}</h2>
+            <p class="lead"><span class="badge badge-primary genero">{{album.artists[0].name}} - {{album.release_date | fecha}}</span></p>
+          </div>
+          <div style="clear:both"></div>
+            <hr class="my-4">
+            <a>Home</a> >
+            <a>{{album.artists[0].name}}</a> >
+            <a>Albums</a>
+            <a>Tracks</a>
+        </div>
+    </div>
+  </div>
+  
+  <div id="favoritos" class="container-fluid">
+    <div class="container">
+        <app-loader *ngIf="!loader; else resultados" class="animated fadeIn"></app-loader>
+    </div>
+  </div>
+
+  
+  <ng-template #resultados>
+      <div class="row">
+          <div class="col">
+            <div class="table-responsive">
+             <table class="table table-dark" width="100%">
+               <tr>
+                  <th>{{ album.name }}</th>
+                  <th>Preview</th>
+                  <th><div (click)="ordenarTracksDuracion()">↑↓</div></th>
+                  <th><span class="float-right">Favoritos</span></th>
+               </tr>
+               <tr *ngFor="let track of tracks">
+                  <td>
+                   {{track.name}}
+                  </td>
+                  <td><audio [src]="track.preview_url" controls></audio></td>
+                  <td>
+                    <span class="badge badge-primary genero text-center">{{track.duration_ms | date:'mm:ss'}}</span>
+                  </td>
+                  <td>
+                    <!--<div class="float-right" (click)="guardandoFavorito(track.id)"><i class="far fa-star"></i></div>-->
+                    <div class="float-right">
+                      <div *ngIf="!esFavorito(track.id); else favorito" (click)="guardandoFavorito(track.id)"><i class="far fa-star"></i></div>
+                    </div>
+  
+                    <ng-template #favorito><i (click)="quitarFavorito(track.id)" class="fas fa-star"></i></ng-template>
+                  </td>
+               </tr>
+             </table>
+            </div>
+              
+          </div>
+    
+          </div>
+  </ng-template>
