@@ -1,8 +1,17 @@
+<app-navbar></app-navbar>
 <div id="principal" class="container-fluid contenedor-jumbotron animated fadeIn">
   <div class="container">
       <div class="jumbotron">
         <div id="" style="float:left;">  
-        <img class="img-thumbnail" [src]="artista.images[0].url | imgArtist">
+        
+        <div *ngIf="artista; else sinImagen">
+            <img class="img-thumbnail" [src]="artista.images[0].url | imgArtist">
+        </div>
+
+        <ng-template #sinImagen>
+            <img class="img-thumbnail" [src]="sinFoto">
+        </ng-template>
+        
         </div>
         <div id="descripcionArtista" style="float:left;">  
         <h2 class="display-4">{{artista.name}}</h2>

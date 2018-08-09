@@ -12,6 +12,7 @@ export class AlbumsComponent implements OnInit {
   artistaId = "";
   albums = [];
   loader = false;
+  sinFoto = "http://admin.shoppingweb.es/imagen_productos/sinFoto.png";
 
   constructor(private _spotify:SpotifyService,
               private activatedRoute:ActivatedRoute,
