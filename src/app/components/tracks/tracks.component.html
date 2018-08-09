@@ -2,7 +2,7 @@
     <div class="container">
         <div class="jumbotron">
           <div id="" style="float:left;">  
-          <img class="img-thumbnail" [src]="album | imgArtist">
+          <img class="img-thumbnail" [src]="album.images[0].url | imgArtist">
           </div>
           <div id="descripcionArtista" style="float:left;">  
           <h2 class="display-4">{{ album.name }}</h2>
@@ -36,23 +36,9 @@
                   <th><div (click)="ordenarTracksDuracion()">↑↓</div></th>
                   <th><span class="float-right">Favoritos</span></th>
                </tr>
-               <tr *ngFor="let track of tracks">
-                  <td>
-                   {{track.name}}
-                  </td>
-                  <td><audio [src]="track.preview_url" controls></audio></td>
-                  <td>
-                    <span class="badge badge-primary genero text-center">{{track.duration_ms | date:'mm:ss'}}</span>
-                  </td>
-                  <td>
-                    <!--<div class="float-right" (click)="guardandoFavorito(track.id)"><i class="far fa-star"></i></div>-->
-                    <div class="float-right">
-                      <div *ngIf="!esFavorito(track.id); else favorito" (click)="guardandoFavorito(track.id)"><i class="far fa-star"></i></div>
-                    </div>
-  
-                    <ng-template #favorito><i (click)="quitarFavorito(track.id)" class="fas fa-star"></i></ng-template>
-                  </td>
-               </tr>
+               
+               <tr *ngFor="let track of tracks" app-track [track]="track"></tr>
+
              </table>
             </div>
               

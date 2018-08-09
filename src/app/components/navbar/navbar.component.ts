@@ -27,12 +27,6 @@ export class NavbarComponent implements OnInit {
     })
   }
 
-  buscarArtista(busqueda){
-    if (busqueda != ""){
-     this.router.navigate(['/artist', busqueda])
-    }
-  }
-
   tengoQueOcultar(){
 
     this.activatedRoute.params.subscribe(par => {

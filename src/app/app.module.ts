@@ -17,6 +17,10 @@ import { AlbumsComponent } from './components/albums/albums.component';
 import { TracksComponent } from './components/tracks/tracks.component';
 import { FechaPipe } from './pipes/fecha.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
+import { SearchComponent } from './components/search/search.component';
+import { CardComponent } from './components/card/card.component';
+import { TrackComponent } from './components/track/track.component';
+import { FavoritosComponent } from './components/favoritos/favoritos.component';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { LoaderComponent } from './components/loader/loader.component';
     AlbumsComponent,
     TracksComponent,
     FechaPipe,
-    LoaderComponent
+    LoaderComponent,
+    SearchComponent,
+    CardComponent,
+    TrackComponent,
+    FavoritosComponent
   ],
   imports: [
     BrowserModule,

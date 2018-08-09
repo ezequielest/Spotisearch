@@ -1,0 +1,27 @@
+<div id="favoritos" class="container-fluid" *ngIf="favoritos; else noFavoritos">
+  <div class="container">
+      <h4>Canciones favoritas</h4> 
+      <div class="row">
+      <div class="col-md-12 col-lg-6" *ngFor="let favorito of favoritos">
+        <a [href]="favorito.url">
+            <app-card [imagen]="favorito.imgAlbum">
+                <div class="card-body">
+                    <h5 class="card-title">{{ favorito.nombre}}</h5>
+                    <p class="card-text">Artista: {{ favorito.artista}}</p>
+                    <p class="card-text">Album: {{ favorito.album}}</p>
+                </div>
+            </app-card>
+        </a>
+      </div>
+
+      </div>
+  </div>
+</div>
+
+<div class="container">
+<ng-template #noFavoritos>
+    <div class="container">
+    <h3>No hay favoritos</h3>
+    </div>
+</ng-template>
+</div>

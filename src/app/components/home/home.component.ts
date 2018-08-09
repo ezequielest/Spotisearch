@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from "../../services/spotify.service";
 
-import { Router } from "@angular/router";
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,23 +9,15 @@ import { Router } from "@angular/router";
 export class HomeComponent implements OnInit {
 
   artista;
-  //url = "../../assets/img/354.jpeg";
   arrayFavoritos = [];
 
-  constructor(private _spotify:SpotifyService,
-              private router:Router) { }
+  constructor(private _spotify:SpotifyService) { }
 
   ngOnInit() {
 
     let favoritos = localStorage.getItem("favoritos");
 
     this.arrayFavoritos = JSON.parse(favoritos);
-  }
-
-  buscarArtista(busqueda){
-    if (busqueda != ""){
-      this.router.navigate(['/artist', busqueda])
-    }
   }
 
 }

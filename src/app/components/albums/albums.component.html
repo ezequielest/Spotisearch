@@ -2,7 +2,7 @@
   <div class="container">
       <div class="jumbotron">
         <div id="" style="float:left;">  
-        <img class="img-thumbnail" [src]="artista | imgArtist">
+        <img class="img-thumbnail" [src]="artista.images[0].url | imgArtist">
         </div>
         <div id="descripcionArtista" style="float:left;">  
         <h2 class="display-4">{{artista.name}}</h2>
@@ -29,15 +29,12 @@
     <div class="row">
     <div class="col-md-12 col-lg-6" *ngFor="let album of albums">
         <a (click)="obtenerTracks(album.id)">
-        <div class="card" style="width: 18rem;">
-            <div class="card-contenedor-img">
-                <img  class="img-thumbnail" [src]="album | imgArtist" alt="">
-            </div>
-            <div class="card-body">
-                <!--<a (click)="obtenerAlbums(artista.id)"><h5 class="card-title">{{artista.name}}</h5></a>-->
+        <app-card [imagen]="album.images[0].url">
+            <div class="card-body">  
                 <h5 class="card-title">{{album.name}}</h5>
             </div>
-        </div>
+        </app-card>
+
         </a>
     </div>
 

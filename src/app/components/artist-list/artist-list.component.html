@@ -35,14 +35,11 @@
     
     <div class="col-md-12 col-lg-6" *ngFor="let artista of artistas">
         <a (click)="obtenerAlbums(artista.id)">
-        <div class="card" style="width: 18rem;">
-            <div class="card-contenedor-img">
-                <img  class="img-thumbnail" [src]="artista | imgArtist" alt="">
-            </div>
+        <app-card [imagen]="artista.images[0].url">
             <div class="card-body">
                 <h5 class="card-title">{{artista.name}}</h5>
             </div>
-        </div>
+        </app-card>
         </a>
     </div>
     </div>
