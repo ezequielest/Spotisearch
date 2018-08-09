@@ -11,8 +11,6 @@ export class SpotifyService {
   token = ""
 
   constructor(private _http:HttpClient) {
-    console.log('corriendo el servicio');
-    console.log(this.token);
     
     let posibleToken = localStorage.getItem("token");
     if (posibleToken != null && posibleToken.length > 0){
@@ -23,13 +21,10 @@ export class SpotifyService {
   }
 
   renovarToken(){
-    console.log('renovando token');
     window.location.href="https://accounts.spotify.com/authorize?client_id=08889519b4c24d199dcfa8a0c731c598&redirect_uri=http://localhost:8080/set-token&scope=user-read-private%20user-read-email&response_type=token&state=123"
   }
 
   setToken(token){
-    console.log('seteando token')
-    console.log(token);
     if (token.lenght == 0){
       return false
     }else{
@@ -48,8 +43,6 @@ export class SpotifyService {
   }
 
   buscarArtista(artista){
-
-    console.log(this.token)
     
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -95,8 +88,6 @@ export class SpotifyService {
 
   obtenerTracksAlbum(albumId){
 
-    console.log(this.token);
-
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
@@ -124,8 +115,6 @@ export class SpotifyService {
   }
 
   guardarTrackFavorito(trackId){
-
-    console.log('intentando guardar en favoritos ' + trackId);
     
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -134,7 +123,6 @@ export class SpotifyService {
     
     return this._http.get('https://api.spotify.com/v1/tracks/'+trackId, {headers}).pipe(
       map(res => {
-        console.log(res);
         return res
       })
     )

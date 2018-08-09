@@ -46,7 +46,7 @@ export class TrackComponent implements OnInit {
 
     arrayFavoritos.forEach((element, index) => {
       if (element.id == id){
-        console.log('encontro');
+
         copia.splice(index,1);
       }
     });

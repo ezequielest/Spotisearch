@@ -42,7 +42,6 @@ export class ArtistListComponent implements OnInit {
 
   buscarArtista(busqueda){
     this.loader = false;
-    console.log(busqueda)
     this.busqueda = busqueda;
     this._spotify.buscarArtista(busqueda).subscribe(
       (data:any) => { 
